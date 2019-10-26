@@ -33,7 +33,7 @@ export const signin = async (req: Request, res: Response) => {
 };
 
 export const profile = async (req: Request, res: Response) => {
-    const user = await User.findById(req.userId);
+    const user = await User.findById(req.userId, {password:0});
 
     if(!user) return res.status(404).json('No user found');
     res.json(user);
